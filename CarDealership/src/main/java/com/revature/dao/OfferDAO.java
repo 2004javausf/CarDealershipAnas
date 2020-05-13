@@ -15,9 +15,9 @@ public interface OfferDAO {
 	SQLException;
 	
 	// Accept Offer
-	public void acceptOffer() throws SQLException;
+	public void acceptOffer(int offerID, int carID) throws SQLException;
 	
 	// Reject offer
-	public void rejectOffer() throws SQLException;
+	public void rejectOffer(int offerID) throws SQLException;
 
 }

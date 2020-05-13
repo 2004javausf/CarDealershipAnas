@@ -7,11 +7,13 @@ import java.util.Scanner;
 
 import com.revature.beans.Car;
 import com.revature.beans.Customer;
+import com.revature.beans.Offer;
 import com.revature.daoimpl.CarDAOImpl;
 import com.revature.daoimpl.CustomerDAOImpl;
 import com.revature.daoimpl.OfferDAOImpl;
 import com.revature.driver.Driver;
 import com.revature.util.Calculations;
+import com.revature.util.LogThis;
 import com.revature.util.UserInfo;
 
 public class CustomerMenu {
@@ -36,6 +38,7 @@ public class CustomerMenu {
 				String inputPassword = scan.nextLine();
 				if (inputPassword.equals(c.getPassword())) {
 					logged = true;
+					LogThis.LogIt("info", c.getUsername() + " has logged into the customer portal");
 					customerMenu();
 				} else System.out.println("Wrong password");
 			}else System.out.println("Username not found");
@@ -47,7 +50,7 @@ public class CustomerMenu {
 			System.out.println("\n====================================");
 			System.out.println("Welcome back sir. How may I help you?");
 			
-			PrintMenu loginMenu = new PrintMenu("Menu", "View Cars in Lot", "View Owned Cars", "View Payments", "Make a Payment", "Make Offer", "Exit");
+			PrintMenu loginMenu = new PrintMenu("Menu", "View Cars in Lot", "View Owned Cars", "View Payments", "Make An Offer", "Exit");
 			loginMenu.display();
 			int customerMenuChoice = scanInt.nextInt();
 			
@@ -75,16 +78,65 @@ public class CustomerMenu {
 				break;
 			case 2:
 				// View Owned Cars
+				cardi = new CarDAOImpl();
+				carList =  new ArrayList<Car>();
+				OfferDAOImpl offdi = new OfferDAOImpl();
+				List<Offer> offerList = new ArrayList<Offer>();
+				int offID;
+				Offer o;
 				
-			case 3:
-				// View Payments
-			
-			case 4:
-				// Make Payment
+				// Print out cars owned by customer
+				try {
+					// Retrieve all offers from database into list
+					offerList = offdi.getOfferList();
+					
+					System.out.println("\nYour inventory:");
+					
+					for(int i=0; i <offerList.size(); i++) {
+						Car carOffer = UserInfo.findCarbyCarId(offerList.get(i).getCarId());
+						String carName = carOffer.getCarColor() + " " + carOffer.getCarMake() + " " + carOffer.getCarModel();
+						
+						if(offerList.get(i).getOfferStatus().equalsIgnoreCase("Accepted") && offerList.get(i).getUsername().equals(c.getUsername())) {
+						System.out.println("Car: " + carName + ", Bought Price: $" + carOffer.getCarPrice());
+						}
+					}
+					
+				}catch (SQLException e) {
+						e.printStackTrace();
+					}
+				customerMenu();
 				break;
+			case 3:
+				// View Remaining Payments
+				offdi = new OfferDAOImpl();
 				
-			case 5:
-				// Make Offers
+				// Print out all payments
+				try {
+					// Retrieve all offers from database into list
+					offerList = offdi.getOfferList();
+					
+					System.out.println("\nPayments list:");
+					
+					for(int i=0; i <offerList.size(); i++) {
+						Car carOffer = UserInfo.findCarbyCarId(offerList.get(i).getCarId());
+						String carName = carOffer.getCarColor() + " " + carOffer.getCarMake() + " " + carOffer.getCarModel();
+						
+						if(offerList.get(i).getOfferStatus().equalsIgnoreCase("Accepted") && offerList.get(i).getUsername().equals(c.getUsername())) {
+							System.out.println("[Car]  " + carName);
+							System.out.println("Down Payment Made: $" + offerList.get(i).getDwnPmt() + 
+								", Monthly Installments: $" + offerList.get(i).getMnthlyPmt() + ", Remaining Payments: " + offerList.get(i).getPmtLeft() + "\n");
+				
+						}
+					}
+					
+					System.out.println("\n**Your monthly installments will be charged at the end of the month.");
+				}catch (SQLException e) {
+						e.printStackTrace();
+					}
+				customerMenu();
+				break;
+			case 4:
+				// Make an offer
 				int offer;
 				
 				do {
@@ -107,8 +159,8 @@ public class CustomerMenu {
 				
 				double monthlyPmt = Calculations.calcMonthlyPmt(offer, dwnPmt, months);
 				
-				// add offer to Offers table
-				OfferDAOImpl offdi = new OfferDAOImpl();
+				// Insert offer into Offers table
+				offdi = new OfferDAOImpl();
 				cardi = new CarDAOImpl();
 				
 				try {
@@ -118,10 +170,14 @@ public class CustomerMenu {
 					e.printStackTrace();
 				}
 				
-				System.out.println("Thank you for placing down your offer");	
+				System.out.println("Thank you for placing down your offer");
+				LogThis.LogIt("info", c.getUsername() + " has placed an offer on carID " + offer);
+				customerMenu();
 				break;
-			case 6:
-				// Main menu
+			case 5:
+				// Return to main menu
+				System.out.println("Logging out..\n");
+				LogThis.LogIt("info", c.getUsername() + " has logged out");
 				Driver.mainMenu();
 			default:
 				System.out.println("Invalid input. Goodbye \n");
@@ -130,11 +186,6 @@ public class CustomerMenu {
 				System.exit(0);
 			}
 		}
-	
-		
-	//----------------------------Methods for Customer Menu---------------------------------------//
-	
-
 	
 	
 }

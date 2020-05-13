@@ -8,6 +8,7 @@ public class Employee {
 	// Constructors
 	public Employee() {
 		super();
+		this.username = "";
 	}
 
 	public Employee(String username, String password) {

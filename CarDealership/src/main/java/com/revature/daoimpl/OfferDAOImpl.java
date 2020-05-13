@@ -1,5 +1,6 @@
 package com.revature.daoimpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,18 +51,24 @@ public class OfferDAOImpl implements OfferDAO {
 	}
 
 	@Override
-	public void rejectOffer() throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public void rejectOffer(int offerID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "{ call REJECTOFFER(?)";
+			CallableStatement ps = conn.prepareCall(sql);
+			ps.setInt(1, offerID);
+			ps.execute();
 	}
-
 
 	@Override
-	public void acceptOffer() throws SQLException {
+	public void acceptOffer(int offerID, int carID) throws SQLException {
 		// TODO Auto-generated method stub
+		Connection conn = cf.getConnection();
+		String sql = "{ call ACCEPTOFFER(?,?)";
+			CallableStatement ps = conn.prepareCall(sql);
+			ps.setInt(1, offerID);
+			ps.setInt(2, carID);
+			ps.execute();
 		
 	}
-
-	
 
 }
