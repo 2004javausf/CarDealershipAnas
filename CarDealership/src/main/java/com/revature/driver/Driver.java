@@ -18,7 +18,6 @@ public class Driver {
 		mainMenu();
 	}
 	
-	
 	//----------------------Main Menu Method--------------------------------------------//
 	
 		public static void mainMenu() {
@@ -38,11 +37,11 @@ public class Driver {
 
 				break;
 			case 1:
-				// Register new account as a customer
+				// Register new account for customers
 				Registration.registerMenu();
 				break;
 			case 2:
-				// Login for customer
+				// Customer login
 				CustomerMenu.userLogin();
 				break;
 			case 3:

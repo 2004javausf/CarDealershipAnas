@@ -63,7 +63,7 @@ public class EmployeeMenu {
 					for(int i=0; i <carList.size(); i++) {
 						if(carList.get(i).getCarStatus().equalsIgnoreCase("available")) {
 						System.out.println("[Car ID: " + carList.get(i).getCarId() + "] | " + carList.get(i).getCarColor() + " " + carList.get(i).getCarMake() + " " + carList.get(i).getCarModel()
-								  + " | Price:" + carList.get(i).getCarPrice() + " |");
+								  + " | Price: $" + carList.get(i).getCarPrice() + " |");
 						}
 					}
 				} catch (SQLException e) {
@@ -207,7 +207,7 @@ public class EmployeeMenu {
 								System.out.println("The customer's offer has been accepted");
 								LogThis.LogIt("info", c.getUsername() + " has accepted offerID:" + offID);
 							}else if(offerAnswer.equalsIgnoreCase("N")){
-								offdi.rejectOffer(offID);
+								offdi.rejectOffer(offID, o.getCarId());
 								System.out.println("The customer's offer has been rejected");
 								LogThis.LogIt("info", c.getUsername() + " has rejected offerID:" + offID);
 							} else {
@@ -229,7 +229,7 @@ public class EmployeeMenu {
 				LogThis.LogIt("info", c.getUsername() + " has logged out");
 				Driver.mainMenu();
 			default:
-				System.out.println("Invalid input. Goodbye \n");
+				System.out.println("Goodbye \n");
 				
 				//Terminate program
 				System.exit(0);
