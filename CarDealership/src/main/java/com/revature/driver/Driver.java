@@ -1,13 +1,7 @@
 package com.revature.driver;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import com.revature.beans.Offer;
-import com.revature.daoimpl.CarDAOImpl;
-import com.revature.daoimpl.OfferDAOImpl;
 import com.revature.menu.CustomerMenu;
 import com.revature.menu.EmployeeMenu;
 import com.revature.menu.PrintMenu;
@@ -23,25 +17,15 @@ public class Driver {
 		// Print out the main menu
 		mainMenu();
 	}
-		
+	
 	
 	//----------------------Main Menu Method--------------------------------------------//
 	
 		public static void mainMenu() {
+			System.out.println("=====================================================");
 			System.out.println("Welcome to Luxury's Car Dealership!");
 			System.out.println("Please select an option:");
-			
-//			EmployeeDAOImpl custdi = new EmployeeDAOImpl();
-//			CarDAOImpl cardi = new CarDAOImpl();
-//			OfferDAOImpl offdi = new OfferDAOImpl();
-//			List<Offer> offerList = new ArrayList<Offer>();
-//			try {
-//				System.out.println(offdi.getOfferList());
-//			} catch (SQLException e) {
-//				
-//				e.printStackTrace();
-//			}
-			
+						
 			PrintMenu mainMenu = new PrintMenu("Main Menu", "Register Account", "Login", "Employee", "Exit");
 			mainMenu.display();
 			int mainMenuChoice = scan.nextInt();
@@ -51,8 +35,8 @@ public class Driver {
 			default:
 				System.out.println("Invalid input\n");
 				mainMenu();
-				//Terminate program
-				System.exit(0);
+
+				break;
 			case 1:
 				// Register new account as a customer
 				Registration.registerMenu();

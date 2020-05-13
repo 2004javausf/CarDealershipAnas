@@ -8,7 +8,7 @@ import com.revature.daoimpl.CarDAOImpl;
 
 public class Calculations {
 	
-	// Calculate monthly payment
+	// Calculate monthly payment for customer
 	public static double calcMonthlyPmt(int carId, double downPmt, int months) {
 		double monthlyPmt = 0;
 		double carPrice = 0;
@@ -22,8 +22,7 @@ public class Calculations {
 					carPrice = carList.get(i).getCarPrice();
 				}
 			
-			monthlyPmt = (carPrice - downPmt) / months;
-				
+			monthlyPmt = (carPrice - downPmt) / months;	
 			}
 		} catch (SQLException e) {
 			
@@ -32,13 +31,5 @@ public class Calculations {
 		
 		return monthlyPmt;
 	}
-
-	
-//	// Calculate number of payments left
-//	public static int paymentsLeft(double pmt, double monthlyPmt) {
-//		int months;
-//		
-//		return months;
-//	}
 
 }
