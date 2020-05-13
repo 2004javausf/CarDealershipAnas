@@ -6,3 +6,27 @@
 [INFO ] 2020-05-12 23:23:40.389 [main] LogThis - Anas has logged into the employee portal
 [INFO ] 2020-05-12 23:23:54.155 [main] LogThis - Anas has logged out
 
+[INFO ] 2020-05-13 08:51:45.399 [main] LogThis - vendetta has logged into the customer portal
+[INFO ] 2020-05-13 08:52:32.994 [main] LogThis - vendetta has placed an offer on carID 5
+[INFO ] 2020-05-13 08:52:41.285 [main] LogThis - vendetta has logged out
+[INFO ] 2020-05-13 08:52:50.644 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 08:55:30.450 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 08:58:09.550 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:00:46.023 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:00:56.618 [main] LogThis - Anas has accepted offerID:4
+[INFO ] 2020-05-13 09:01:49.565 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:02:12.956 [main] LogThis - Anas has rejected offerID:3
+[INFO ] 2020-05-13 09:02:20.430 [main] LogThis - Anas has logged out
+[INFO ] 2020-05-13 09:07:41.721 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:08:29.806 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:17:05.425 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:19:12.386 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:19:24.170 [main] LogThis - Anas has rejected offerID:16
+[INFO ] 2020-05-13 09:19:51.398 [main] LogThis - Anas has accepted offerID:14
+[INFO ] 2020-05-13 09:20:29.162 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:21:57.355 [main] LogThis - maria98 has logged into the customer portal
+[INFO ] 2020-05-13 09:22:18.648 [main] LogThis - maria98 has logged out
+[INFO ] 2020-05-13 09:29:46.422 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:30:31.658 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:33:00.116 [main] LogThis - Anas has logged into the employee portal
+[INFO ] 2020-05-13 09:33:48.346 [main] LogThis - Anas has rejected offerID:24

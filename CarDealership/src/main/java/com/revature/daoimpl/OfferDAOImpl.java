@@ -51,11 +51,12 @@ public class OfferDAOImpl implements OfferDAO {
 	}
 
 	@Override
-	public void rejectOffer(int offerID) throws SQLException {
+	public void rejectOffer(int offerID, int carID) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "{ call REJECTOFFER(?)";
+		String sql = "{ call REJECTOFFER(?,?)";
 			CallableStatement ps = conn.prepareCall(sql);
 			ps.setInt(1, offerID);
+			ps.setInt(2, carID);
 			ps.execute();
 	}
 

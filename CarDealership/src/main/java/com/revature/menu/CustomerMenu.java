@@ -67,7 +67,7 @@ public class CustomerMenu {
 					for(int i=0; i <carList.size(); i++) {
 						if(carList.get(i).getCarStatus().equalsIgnoreCase("available")) {
 						System.out.println("[Car ID: " + carList.get(i).getCarId() + "] | " + carList.get(i).getCarColor() + " " + carList.get(i).getCarMake() + " " + carList.get(i).getCarModel()
-								  + " | Price:" + carList.get(i).getCarPrice() + " |");
+								  + " | Price: $" + carList.get(i).getCarPrice() + " |");
 						}
 					}
 				} catch (SQLException e) {
@@ -180,7 +180,7 @@ public class CustomerMenu {
 				LogThis.LogIt("info", c.getUsername() + " has logged out");
 				Driver.mainMenu();
 			default:
-				System.out.println("Invalid input. Goodbye \n");
+				System.out.println("Goodbye \n");
 				
 				//Terminate program
 				System.exit(0);
